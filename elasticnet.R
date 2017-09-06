@@ -19,6 +19,7 @@ x = as.matrix(supermarket1996[ ,c(6:50)])
 # Define dependant variable
 y = as.vector(supermarket1996$GROCCOUP_sum)
 
+# PART A
 ################################################################################
 # Majorization Function for Elastic Net
 ################################################################################
@@ -56,7 +57,7 @@ elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
                       lambda*alpha*D ) %*% b - (2*n)^-1 * (t(b)%*%t(x)) %*% y + c
   
   # Update estimates
-  t = 0 
+  t = 0
   while (t == 0 | L_en[ ,t] - (L_en[ ,t] / L_en[ ,t+1]) > eps ) {
     t = t + 1
     d_jj = 1/(2*max(abs(b), eps))
@@ -81,3 +82,16 @@ elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
 ################################################################################
 
 elasticnet(x, y)
+
+################################################################################
+# USE GLMNET PACKAGE FOR COMPARISON
+################################################################################
+
+# Load package
+library(glmnet)
+# Fit elastic net (LASSO, alpha=1)
+check = cv.glmnet(x, y, alpha=1)
+# Plot lambda's after CV
+plot(check)
+# Coefficient estimates after shrinking
+coef(check, s = "lambda.min")
