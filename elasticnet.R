@@ -41,7 +41,7 @@ elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
   n = ncol(x)
   
   # Initialize some b vector, we use a vector with ones
-  b <- as.matrix(rep(1, n))
+  b = as.matrix(rep(1, n))
   
   # Compute L_en(b)
   c = (2*n^-1)*(t(y)%*%y) + lambda*(0.5*alpha*sum(abs(b)))
