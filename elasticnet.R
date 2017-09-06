@@ -37,11 +37,6 @@ y = as.vector(supermarket1996$GROCCOUP_sum)
 
 elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
   
-  lambda = 1
-  alpha = 1
-  verbose = T
-  eps = 1e-09
-  
   # Define amount of variables in x
   n = ncol(x)
   
