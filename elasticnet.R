@@ -48,7 +48,7 @@ elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
   d_jj = 1/(2*max(abs(b), eps))
   D = diag(d_jj, n)
   
-  L_en_0 = t(b) %*% ( (2*n)^-1 * t(x)%*%x + (lambda*0.5*(1-alpha))*diag(n) + 
+  L_en = t(b) %*% ( (2*n)^-1 * t(x)%*%x + (lambda*0.5*(1-alpha))*diag(n) + 
                       lambda*alpha*D ) %*% b - (2*n)^-1 * (t(b)%*%t(x)) %*% y + c
   
   # Update estimates
