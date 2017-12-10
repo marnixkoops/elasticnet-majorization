@@ -14,7 +14,6 @@ x = as.matrix(supermarket1996[ ,c(6:50)])
 # Define dependant variable
 y = as.vector(supermarket1996$GROCCOUP_sum)
 
-# PART A
 ################################################################################
 # Majorization Function for Elastic Net
 ################################################################################
