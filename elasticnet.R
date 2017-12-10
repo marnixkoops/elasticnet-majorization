@@ -1,11 +1,6 @@
-# Group 14
-
 ################################################################################
 # SETUP
 ################################################################################
-
-# Set working directory where data is located
-setwd("~/Documents/Studie/MSc Econometrics/Multivariate Statistics/Assignments/Week 1")
 
 # Load the data
 load("supermarket1996.RData")
