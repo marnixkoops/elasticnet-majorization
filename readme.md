@@ -1,1 +1,1 @@
-Quadratic majorization algorithm for the Elastic Net
+A surrogate algorithm to optimize the Elastic Net objective function.
