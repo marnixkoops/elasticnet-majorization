@@ -1,20 +1,4 @@
 ################################################################################
-# SETUP
-################################################################################
-
-# Load the data
-load("supermarket1996.RData")
-
-# Overview of the variables included in the dataframe
-str(supermarket1996)
-summary(supermarket1996)
-
-# Select predictor variables age9 to shpindx
-x = as.matrix(supermarket1996[ ,c(6:50)])
-# Define dependant variable
-y = as.vector(supermarket1996$GROCCOUP_sum)
-
-################################################################################
 # Majorization Function for Elastic Net
 ################################################################################
 # DESCRIPTION: Majorization algorithm for the elastic net
@@ -65,22 +49,3 @@ elasticnet <- function(x, y, lambda = 1, alpha = 1, verbose=T, eps = 1e-09) {
   }
   return(b)
 }
-
-################################################################################
-# TEST FUNCTION
-################################################################################
-
-elasticnet(x, y)
-
-################################################################################
-# USE GLMNET PACKAGE FOR COMPARISON
-################################################################################
-
-# Load package
-library(glmnet)
-# Fit elastic net (LASSO, alpha=1)
-check = cv.glmnet(x, y, alpha=1)
-# Plot lambda's after CV
-plot(check)
-# Coefficient estimates after shrinking
-coef(check, s = "lambda.min")
